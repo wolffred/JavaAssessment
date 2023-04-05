@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
 
         Requestor requestor1 = new Requestor("Bob", true, new Desktop());
-        Requestor requestor2 = new Requestor("Bob", false, new Desktop());
+        Requestor requestor2 = new Requestor("Bib", false, new Desktop());
 
         PCBuilder pcbuilder = new PCBuilder();
 

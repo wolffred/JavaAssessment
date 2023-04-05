@@ -6,7 +6,7 @@ import org.example.VirtualMachineOrganisation.VM.VM;
 public class PCBuilder implements AuthorisingService, SystemBuildService {
 
     private Requestor requestor;
-    int pcBuiltToday;
+    int pcBuiltToday = 000;
     int failedToBuildPc;
     boolean authorised = false;
     @Override
@@ -23,30 +23,69 @@ public class PCBuilder implements AuthorisingService, SystemBuildService {
 
 
     public boolean iisAuthorised( boolean b) {
-        return b;
+        authorised = b;
+        return authorised;
     }
 
     @Override
     public String createNewMachine(VM machine) {
-        return null;
+        pcBuiltToday  +=1;
+        if(pcBuiltToday == 1){
+            String pcBuilt = "001";
+            System.out.println("host20230405" + pcBuilt);
+        }
+        else if(pcBuiltToday == 2){
+            String pcBuilt = "002";
+            System.out.println("host20230405" + pcBuilt);
+        }
+        else if(pcBuiltToday == 3){
+            String pcBuilt = "003";
+            System.out.println("host20230405" + pcBuilt);
+        }
+        else if(pcBuiltToday == 4){
+            String pcBuilt = "004";
+            System.out.println("host20230405" + pcBuilt);
+        }
+        else if(pcBuiltToday == 5){
+            String pcBuilt = "005";
+            System.out.println("host20230405" + pcBuilt);
+        }
+        else if(pcBuiltToday == 6){
+            String pcBuilt = "007";
+            System.out.println("host20230405" + pcBuilt);
+        }
+        else if(pcBuiltToday == 7){
+            String pcBuilt = "007";
+            System.out.println("host20230405" + pcBuilt);
+        }
+        else if(pcBuiltToday == 8){
+            String pcBuilt = "008";
+            System.out.println("host20230405" + pcBuilt);
+        }
+        else if(pcBuiltToday == 9){
+            String pcBuilt = "001";
+            System.out.println("host20230405" + pcBuilt);
+        }
+        else {
+            System.out.println("host20230405" + pcBuiltToday);
+        }
+
+        System.out.println(pcBuiltToday);
+        return "Machine Created";
     }
 
 
 
 
-    public void buildMachine(Requestor requestor){
+    public String buildMachine(Requestor requestor){
         if(iisAuthorised(requestor.getAuthorised() == true)){
             createNewMachine(requestor.getMachineType());
-            {
-                pcBuiltToday  +=1;
-                System.out.println("host20230405" + pcBuiltToday);
-                System.out.println(pcBuiltToday);
-
-            }
+            return "Machine built";
         }else{
             failedToBuildPc+=1;
             System.out.println(failedToBuildPc);
         }
+        return null;
     };
 
 }

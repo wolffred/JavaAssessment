@@ -14,6 +14,9 @@ public class Server extends VM {
 
     public Server(String hostName, Requestor requestor, int numberOfCPUs, int numberOfRamGb, int hardDiskSize) {
         super(hostName, requestor, numberOfCPUs, numberOfRamGb, hardDiskSize);
+        this.setNumberOfCPUs(8);
+        this.setNumberOfRamGb(64);
+        this.setHardDiskSize(500);
 
 
     }

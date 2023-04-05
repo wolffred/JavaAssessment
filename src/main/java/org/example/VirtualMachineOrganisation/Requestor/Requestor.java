@@ -27,6 +27,7 @@ public class Requestor {
         return this.authorised;
     }
 
+
     public void setAuthorised(boolean authorised) {
         this.authorised = authorised;
     }

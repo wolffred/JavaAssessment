@@ -11,10 +11,14 @@ public class Desktop extends VM{
 
     public Desktop(String hostName, Requestor requestor, int numberOfCPUs, int numberOfRamGb, int hardDiskSize) {
         super(hostName, requestor, numberOfCPUs, numberOfRamGb, hardDiskSize);
+        this.setNumberOfCPUs(1);
+        this.setNumberOfRamGb(16);
+        this.setHardDiskSize(500);
 
         this.MicrosoftWindowsVersion = MicrosoftWindowsVersion;
         this.buildNumber = buildNumber;
     }
+
 
 
     public Desktop() {
