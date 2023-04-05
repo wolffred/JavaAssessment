@@ -16,6 +16,8 @@ public class Main {
         pcbuilder.buildMachine(requestor1);
         pcbuilder.buildMachine(requestor1);
         pcbuilder.buildMachine(requestor2);
+        System.out.println(pcbuilder.getPcBuiltToday());
+        System.out.println(pcbuilder.getFailedToBuildPc());
         //System.out.println("Hello world!");
     }
 }

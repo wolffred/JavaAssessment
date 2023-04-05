@@ -70,7 +70,7 @@ public class PCBuilder implements AuthorisingService, SystemBuildService {
             System.out.println("host20230405" + pcBuiltToday);
         }
 
-        System.out.println(pcBuiltToday);
+        System.out.println(pcBuiltToday + " Virtual Machine(s) built today");
         return "Machine Created";
     }
 
@@ -78,14 +78,25 @@ public class PCBuilder implements AuthorisingService, SystemBuildService {
 
 
     public String buildMachine(Requestor requestor){
-        if(iisAuthorised(requestor.getAuthorised() == true)){
+        if(iisAuthorised(requestor.getAuthorised())){
             createNewMachine(requestor.getMachineType());
             return "Machine built";
         }else{
             failedToBuildPc+=1;
-            System.out.println(failedToBuildPc);
+//            System.out.println(failedToBuildPc + " Failed request");
+            System.out.println("");
         }
-        return null;
+        return "Machine built";
     };
+
+    public int getPcBuiltToday(){
+        System.out.print("Number of machines that got built are ");
+        return pcBuiltToday;
+    }
+
+    public int getFailedToBuildPc(){
+        System.out.print("Number of machines that failed to build are ");
+        return failedToBuildPc;
+    }
 
 }
