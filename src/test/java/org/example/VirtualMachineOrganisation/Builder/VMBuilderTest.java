@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 @ExtendWith(MockitoExtension.class)
-class PCBuilderTest {
+class VMBuilderTest {
 
     private Requestor requestor1;
 
@@ -22,43 +22,43 @@ class PCBuilderTest {
     private Requestor requestor;
 
     @Mock
-    private PCBuilder pcBuilder;
+    private VMBuilder VMBuilder;
 
     @BeforeEach
     void setup(){
         requestor = mock(Requestor.class);
-        pcBuilder = mock(PCBuilder.class);
+        VMBuilder = mock(VMBuilder.class);
         requestor1 = new Requestor("Bob", true, new Desktop());
     }
 
     @Test
     void isAuthorised() {
-        assertNotEquals(true, pcBuilder.isAuthorised(requestor1.getUserName()));
+        assertNotEquals(true, VMBuilder.isAuthorised(requestor1.getUserName()));
     }
 
     @Test
     void iisAuthorised() {
-        pcBuilder.iisAuthorised(requestor1.getAuthorised());
-        assertFalse(pcBuilder.iisAuthorised(requestor.getAuthorised()));
+        VMBuilder.iisAuthorised(requestor1.getAuthorised());
+        assertFalse(VMBuilder.iisAuthorised(requestor.getAuthorised()));
 
     }
 
     @Test
     void createNewMachine() {
-        pcBuilder.createNewMachine(requestor.getMachineType());
-        assertEquals("Machine Created", pcBuilder.createNewMachine(requestor1.getMachineType()));
+        VMBuilder.createNewMachine(requestor.getMachineType());
+        assertEquals("Machine Created", VMBuilder.createNewMachine(requestor1.getMachineType()));
     }
 
     @Test
     void buildMachine() {
-        assertEquals("mds", pcBuilder.buildMachine(requestor1));
+        assertEquals("mds", VMBuilder.buildMachine(requestor1));
     }
 
 
     @Test
     void getPcBuiltToday() {
-        pcBuilder.buildMachine(requestor1);
-        int pcsBuilt = pcBuilder.getPcBuiltToday();
+        VMBuilder.buildMachine(requestor);
+        int pcsBuilt = VMBuilder.getBuiltToday();
         assertEquals(1, pcsBuilt);
 
     }
