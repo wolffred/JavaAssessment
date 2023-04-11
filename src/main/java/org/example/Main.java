@@ -12,7 +12,7 @@ public class Main {
 
         VMBuilder pcbuilder = new VMBuilder();
 
-        pcbuilder.buildMachine(requestor1);
+        System.out.println(pcbuilder.buildMachine(requestor1));
         pcbuilder.buildMachine(requestor1);
         pcbuilder.buildMachine(requestor2);
         System.out.println(pcbuilder.getBuiltToday());

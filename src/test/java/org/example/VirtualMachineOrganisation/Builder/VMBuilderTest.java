@@ -16,6 +16,8 @@ class VMBuilderTest {
 
     private Requestor requestor1;
 
+    private VMBuilder pcbuilder1;
+
     //Setup
 
     @Mock
@@ -28,16 +30,18 @@ class VMBuilderTest {
     void setup(){
         requestor = mock(Requestor.class);
         VMBuilder = mock(VMBuilder.class);
+        pcbuilder1 = new VMBuilder();
         requestor1 = new Requestor("Bob", true, new Desktop());
     }
 
     @Test
-    void isAuthorised() {
-        assertNotEquals(true, VMBuilder.isAuthorised(requestor1.getUserName()));
+    void isAuthorised_when_true() {
+        pcbuilder1.requestor = requestor1;
+        assertTrue(pcbuilder1.isAuthorised(requestor1.getUserName()));
     }
 
     @Test
-    void iisAuthorised() {
+    void isAuthorised_When_False() {
         VMBuilder.iisAuthorised(requestor1.getAuthorised());
         assertFalse(VMBuilder.iisAuthorised(requestor.getAuthorised()));
 
@@ -45,25 +49,28 @@ class VMBuilderTest {
 
     @Test
     void createNewMachine() {
-        VMBuilder.createNewMachine(requestor.getMachineType());
-        assertEquals("Machine Created", VMBuilder.createNewMachine(requestor1.getMachineType()));
+        pcbuilder1.createNewMachine(requestor.getMachineType());
+        assertEquals("Machine Created", pcbuilder1.createNewMachine(requestor1.getMachineType()));
     }
 
     @Test
     void buildMachine() {
-        assertEquals("mds", VMBuilder.buildMachine(requestor1));
+        assertEquals("Machine built", pcbuilder1.buildMachine(requestor1));
     }
 
 
     @Test
     void getPcBuiltToday() {
-        VMBuilder.buildMachine(requestor);
-        int pcsBuilt = VMBuilder.getBuiltToday();
+        pcbuilder1.buildMachine(requestor1);
+        int pcsBuilt = pcbuilder1.getBuiltToday();
         assertEquals(1, pcsBuilt);
 
     }
 
     @Test
     void getFailedToBuildPc() {
+        pcbuilder1.buildMachine(requestor1);
+        int pcsBuilt = pcbuilder1.getTotalFailedBuildsForDay();
+        assertEquals(0, pcsBuilt);
     }
 }

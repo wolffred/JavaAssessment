@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class VMBuilder implements AuthorisingService, SystemBuildService {
 
-    private Requestor requestor;
+    Requestor requestor;
     int BuiltToday = 000;
     int totalFailedBuildsForDay;
     boolean authorised = false;
