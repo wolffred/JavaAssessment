@@ -14,17 +14,30 @@ public class VMBuilder implements AuthorisingService, SystemBuildService {
     boolean authorised = false;
 
     Map<String, Map<String, Integer>> users = new HashMap<>();
+//    @Override
+//    public boolean isAuthorised(String user) {
+//        Requestor requestor = null;
+//        if (requestor.getUserName() == user){
+//            if(requestor.getAuthorised() == true){
+//                authorised = true;
+//            }else{
+//                authorised = false;
+//            }
+//        }
+//        return authorised;
+//    }
+
+
     @Override
     public boolean isAuthorised(String user) {
-        if (requestor.getUserName() == user){
-            if(requestor.getAuthorised() == true){
-                authorised = true;
-            }else{
-                authorised = false;
-            }
-        }
-        return authorised;
+        if user
+
     }
+
+//    @Override
+//    public boolean isAuthorised(String user) {
+//        return false;
+//    }
 
 
     public boolean iisAuthorised( boolean b) {
@@ -82,9 +95,24 @@ public class VMBuilder implements AuthorisingService, SystemBuildService {
 
 
 
-    public String buildMachine(Requestor requestor){
-        if(iisAuthorised(requestor.getAuthorised())){
+
+//    public String buildMachine(Requestor requestor){
+//        if(isAuthorised(requestor.getUserName())){
+//            createNewMachine(requestor.getMachineType());
+//            return "Machine built";
+//        }else{
+//            totalFailedBuildsForDay +=1;
+////            System.out.println(failedToBuildPc + " Failed request");
+//            System.out.println("");
+//        }
+//        return "Machine built";
+//    };
+
+
+        public String buildMachine(Requestor requestor){
+        if(iisAuthorised(requestor.getAuthorised() == true)){
             createNewMachine(requestor.getMachineType());
+            System.out.println(requestor.getMachineType());
             return "Machine built";
         }else{
             totalFailedBuildsForDay +=1;
@@ -103,5 +131,6 @@ public class VMBuilder implements AuthorisingService, SystemBuildService {
         System.out.print("Number of machines that failed to build are ");
         return totalFailedBuildsForDay;
     }
+
 
 }

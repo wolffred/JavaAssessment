@@ -21,4 +21,7 @@ public class Server extends VM {
 
     }
 
+    public Server() {
+
+    }
 }
